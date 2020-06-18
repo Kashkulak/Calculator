@@ -5,14 +5,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 
     <style name="btn" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:layout_margin"> 7dp </item>
+        <item name="android:textSize">34sp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">33sp</item>
         <item name="android:layout_width"> 0dp </item>
         <item name="android:layout_height"> match_parent </item>
         <item name="android:layout_weight">1</item>
@@ -24,7 +25,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:layout_margin"> 7dp </item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">33sp</item>
+       <item name="android:textSize">34sp</item>
         <item name="android:layout_width"> 0dp </item>
         <item name="android:layout_height"> match_parent </item>
         <item name="android:onClick">Logic_onClick_buttonTyping</item>
@@ -35,7 +36,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="android:layout_margin"> 7dp </item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">33sp</item>
+        <item name="android:textSize">34sp</item>
         <item name="android:layout_width"> 0dp </item>
         <item name="android:layout_height"> match_parent </item>
         <item name="android:layout_weight">1</item>

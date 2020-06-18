@@ -1,27 +1,56 @@
 package com.example.calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     TextView panel;
-    private double result, firstNumber, secondNumber;
-    private String operation;
+    private String operation = "";
+    private boolean isOperation = false;
     private String intermediateNumber = "";
-    boolean isOperation = false;
+    private double firstNumber, secondNumber, result;
+    private static final String SAVED_STRING = "saved_string";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("ololo", "onCreate");
+        Log.d("ololo", "intermediateNumber: " + intermediateNumber);
+
         panel = findViewById(R.id.panel);
     }
+
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        panel.setText(savedInstanceState.getString("result"));
+        firstNumber = savedInstanceState.getDouble("firstNumber");
+        operation = savedInstanceState.getString("operation");
+        intermediateNumber = savedInstanceState.getString("intermediateNumber");
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("result", panel.getText().toString());
+        outState.putDouble("firstNumber", firstNumber);
+        outState.putString("intermediateNumber", intermediateNumber);
+        outState.putString("operation", operation);
+    }
+
 
     public void onClick_buttonTyping(View view) {
         if (isOperation) {
@@ -142,11 +171,9 @@ public class MainActivity extends AppCompatActivity {
                         case "+":
                             result = firstNumber + secondNumber;
                             break;
-
                         case "-":
                             result = firstNumber - secondNumber;
                             break;
-
                         case "*":
                             result = firstNumber * secondNumber;
                             break;
