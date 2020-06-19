@@ -4,31 +4,51 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    static String INPUT_KEY;
+    static String KEY;
+
     TextView panel;
     private String operation = "";
     private boolean isOperation = false;
-    private String intermediateNumber = "";
+    private String intermediateNumber = "", saveText;
     private double firstNumber, secondNumber, result;
-    private static final String SAVED_STRING = "saved_string";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("ololo", "onCreate");
-        Log.d("ololo", "intermediateNumber: " + intermediateNumber);
 
         panel = findViewById(R.id.panel);
+
+        Button button = findViewById(R.id.save);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String resultText = saveText + result;
+                Intent intent = new Intent();
+                intent.putExtra(KEY, resultText);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+        if (getIntent() != null) {
+            Intent intent = getIntent();
+            if (intent.getStringExtra(INPUT_KEY) != null) {
+                saveText = intent.getStringExtra(INPUT_KEY);
+            } else if (intent.getStringExtra(Intent.EXTRA_TEXT) != null) {
+                saveText = intent.getStringExtra(Intent.EXTRA_TEXT);
+            }
+        }
     }
 
 

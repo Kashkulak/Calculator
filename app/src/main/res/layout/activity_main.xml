@@ -170,16 +170,27 @@
             android:layout_weight="1">
 
 
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_zero"
+                android:text="save"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
             <Button
                 android:id="@+id/zero"
-                android:layout_margin="7dp"
-                android:layout_height="match_parent"
                 android:layout_width="0dp"
-                android:paddingStart="-95dp"
+                android:layout_height="match_parent"
+                android:layout_margin="7dp"
+                android:layout_weight="1"
                 android:background="@drawable/btn_zero"
                 android:onClick="onClick_buttonTyping"
                 android:text="0"
-                android:layout_weight="2.1895"
                 android:textColor="@android:color/white"
                 android:textSize="33sp" />
 
